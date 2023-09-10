@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "outDir": "./dist",
+    "allowJs": true,
+    "module": "commonjs",
+    "sourceMap": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationDir": "./dist",
+    "skipLibCheck": true,
+    "strict": true,
+    "rootDir": "./src",
+    "paths": {
+      "payload-discord/fields": ["./src/fields/index.ts"]
+    },
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
