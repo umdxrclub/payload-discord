@@ -1,4 +1,4 @@
-import { Configuration } from "webpack";
+import { Config } from "payload/config";
 
 function walkDirectory(dirPath: string, extensions: string[]): string[] {
   const fs = eval("require")("fs");
@@ -19,12 +19,13 @@ function walkDirectory(dirPath: string, extensions: string[]): string[] {
   return files;
 }
 
+type WebpackConfiguration = Required<Required<Config>["admin"]>["webpack"]
 export function webpackIgnore(
   emptyObjPath: string,
   aliasDirectories: string[],
   fallbackModules: string[],
-  previousTransformer?: (config: Configuration) => Configuration
-): ((config: Configuration) => Configuration) | undefined {
+  previousTransformer?: WebpackConfiguration
+): WebpackConfiguration | undefined {
   if (typeof window !== "undefined") return;
 
   const path = require("path");
@@ -35,7 +36,7 @@ export function webpackIgnore(
     return arr.concat(files);
   }, [] as string[]);
 
-  return (config: Configuration) => {
+  return (config) => {
     if (previousTransformer) config = previousTransformer(config);
 
     let newConfig = {

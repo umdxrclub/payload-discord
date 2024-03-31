@@ -1,11 +1,11 @@
 import { Field } from "payload/dist/fields/config/types";
 import { FieldBaseNoType } from ".";
-import GuildField from "../components/GuildField";
-import GuildChannelField from "../components/GuildChannelField";
 import GuildEventField from "../components/GuildEventField";
+import GuildField from "../components/GuildField";
+import GuildRoleField from "../components/GuildRoleField";
 
 type GuildFieldParameters = FieldBaseNoType;
-export function guildField(field: GuildFieldParameters): Field {
+export function guildField(field: FieldBaseNoType): Field {
   return {
     ...field,
     type: "text",
@@ -18,24 +18,10 @@ export function guildField(field: GuildFieldParameters): Field {
 }
 
 type GuildChannelFieldParameters = FieldBaseNoType;
-export function guildChannelField(field: GuildChannelFieldParameters): Field {
+export function guildChannelField(field: FieldBaseNoType): Field {
     return {
         ...field,
-        type: "group",
-        fields: [
-            guildField({
-                name: "guild"
-            }),
-            {
-                type: "text",
-                name: "channel"
-            }
-        ],
-        admin: {
-            components: {
-                Field: GuildChannelField
-            }
-        }
+        type: "text"
     }
 }
 
@@ -67,6 +53,28 @@ export function guildEventField(field: GuildEventFieldParameters): Field {
             let valid = (hasGuild && hasEvent) || (!hasGuild && !hasEvent);
 
             return valid ? true : "Cannot partially fill in an event field!";
+        }
+    }
+}
+
+type GuildRoleFieldParameters = FieldBaseNoType;
+export function guildRoleField(field: GuildRoleFieldParameters): Field {
+    return {
+        ...field,
+        type: "group",
+        fields: [
+            guildField({
+                name: "guild"
+            }),
+            {
+                name: "role",
+                type: "text"
+            }
+        ],
+        admin: {
+            components: {
+                Field: GuildRoleField
+            }
         }
     }
 }

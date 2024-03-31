@@ -61,9 +61,18 @@ export function useEventOptions(guildId: string | undefined) {
   })) ?? []);
 }
 
+export function useRoleOptions(guildId: string | undefined) {
+  let guild = useDiscordGuild(guildId).data;
+
+  return useOptions(guild, guild => guild?.roles.map(r => ({
+    label: r.name,
+    value: r.id
+  })) ?? []);
+}
+
 export function useDiscordGuild(guildId: string | undefined) {
   return useQuery({
-    queryKey: [`guild-${guildId}`],
+    queryKey: [`guild-${guildId ?? "null"}`],
     queryFn: () => guildId ?
       fetch(`/api/globals/discord/guilds/${guildId}`).then(
         (res) => res.json() as Promise<GuildOverview | null>

@@ -21,6 +21,11 @@ export function handleWithDiscordClient(
       return;
     }
 
+    if (!req.user) {
+      res.status(401).send({ err: "You must be signed in."})
+      return;
+    }
+
     handler(req, res, client);
   };
 }
