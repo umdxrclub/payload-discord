@@ -1,0 +1,12 @@
+.discord-user-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.discord-user-pfp {
+    background-color: red;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+}

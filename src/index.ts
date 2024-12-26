@@ -1,9 +1,9 @@
-import { initializeDiscordClient } from "./discord/bot";
-import { UserSummary } from "./discord/data";
-import { createDiscordPlugin } from "./plugin";
+import { DiscordMessageField } from "./fields/Message";
+import { DiscordUserField } from "./fields/User";
+import { payloadDiscord } from "./plugin";
 
 export {
-  createDiscordPlugin,
-  initializeDiscordClient,
-  UserSummary
+  payloadDiscord,
+  DiscordMessageField,
+  DiscordUserField
 };
