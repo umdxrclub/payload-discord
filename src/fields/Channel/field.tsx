@@ -4,11 +4,11 @@ import { FieldDescription, FieldLabel, useField } from "@payloadcms/ui";
 import { TextFieldClientComponent } from "payload";
 import { useCallback } from "react";
 import DiscordAPIInputField, {
-  APIDataFetcher
+  APIDataFetcher,
 } from "../../components/DiscordAPIInputField";
 import { useDiscord } from "../../data/context";
 
-const DiscordUserField: TextFieldClientComponent = (args) => {
+const DiscordChannelField: TextFieldClientComponent = (args) => {
   const {
     path,
     readOnly,
@@ -21,11 +21,10 @@ const DiscordUserField: TextFieldClientComponent = (args) => {
   const payloadPlaceholder = admin?.placeholder as string | undefined;
 
   const fetchData = useCallback<APIDataFetcher>(async (id) => {
-    let user = await api.fetchUser(id);
+    let channel = await api.fetchChannel(id);
 
     return {
-      displayName: user?.name,
-      iconUrl: user?.profilePictureUrl,
+      displayName: channel?.name,
     };
   }, []);
 
@@ -50,4 +49,4 @@ const DiscordUserField: TextFieldClientComponent = (args) => {
   );
 };
 
-export default DiscordUserField;
+export default DiscordChannelField;

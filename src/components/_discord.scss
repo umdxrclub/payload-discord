@@ -1,1 +1,13 @@
-$discord-black: #23272A;
+@use "sass:color";
+@import "~@payloadcms/ui/scss";
+
+
+$discord-black: #23272a;
+$discord-blurple: #5865f2;
+$discord-blurple-dark: color.change($discord-blurple, $alpha: 0.75);
+$discord-blurple-darker: color.change($discord-blurple, $alpha: 0.5);
+$discord-blurple-darkest: color.change($discord-blurple, $alpha: 0.25);
+
+@mixin discord-input {
+  @include formInput;
+}

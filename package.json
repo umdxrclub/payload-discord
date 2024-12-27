@@ -1,24 +1,24 @@
 {
   "name": "@xrclub/payload-discord",
-  "version": "1.0.2",
+  "version": "3.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "devDependencies": {
-    "@types/express": "^4.17.17",
-    "@types/react": "^18.2.18",
+    "@types/react": "^19.0.0",
     "copyfiles": "^2.4.1",
     "nodemon": "^3.0.1",
     "typescript": "^5.1.6",
-    "webpack": "^5.88.2"
+    "webpack": "^5.88.2",
+    "payload": "^3.9.0",
+    "@payloadcms/ui": "3.9.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@payloadcms/ui": "^3.11.0",
-    "discord.js": "^14.13.0",
-    "payload": "^3.9.0"
+    "@emotion/styled": "^11.11.0"
   },
   "scripts": {
     "build": "tsc",
@@ -27,7 +27,9 @@
   },
   "peerDependencies": {
     "payload": "^3.9.0",
-    "react": "^18.2.0",
+    "@payloadcms/ui": "3.9.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-i18next": "^11.18.6"
   },
   "files": [

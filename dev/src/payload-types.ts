@@ -102,11 +102,21 @@ export interface Media {
 export interface Field {
   id: string;
   user?: string | null;
+  channel?: string | null;
   message?: {
     channelId?: string | null;
     messageId?: string | null;
   };
-  test?: string | null;
+  guild?: string | null;
+  guildEmoji?: {
+    guildId?: string | null;
+    emojiId?: string | null;
+  };
+  guildEvent?: {
+    guildId?: string | null;
+    eventId?: string | null;
+  };
+  test: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -210,11 +220,25 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface FieldsSelect<T extends boolean = true> {
   user?: T;
+  channel?: T;
   message?:
     | T
     | {
         channelId?: T;
         messageId?: T;
+      };
+  guild?: T;
+  guildEmoji?:
+    | T
+    | {
+        guildId?: T;
+        emojiId?: T;
+      };
+  guildEvent?:
+    | T
+    | {
+        guildId?: T;
+        eventId?: T;
       };
   test?: T;
   updatedAt?: T;

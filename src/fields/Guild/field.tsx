@@ -8,7 +8,7 @@ import DiscordAPIInputField, {
 } from "../../components/DiscordAPIInputField";
 import { useDiscord } from "../../data/context";
 
-const DiscordUserField: TextFieldClientComponent = (args) => {
+const DiscordGuildField: TextFieldClientComponent = (args) => {
   const {
     path,
     readOnly,
@@ -21,11 +21,11 @@ const DiscordUserField: TextFieldClientComponent = (args) => {
   const payloadPlaceholder = admin?.placeholder as string | undefined;
 
   const fetchData = useCallback<APIDataFetcher>(async (id) => {
-    let user = await api.fetchUser(id);
+    let guild = await api.fetchGuild(id);
 
     return {
-      displayName: user?.name,
-      iconUrl: user?.profilePictureUrl,
+      displayName: guild?.name,
+      iconUrl: guild?.iconUrl,
     };
   }, []);
 
@@ -50,4 +50,4 @@ const DiscordUserField: TextFieldClientComponent = (args) => {
   );
 };
 
-export default DiscordUserField;
+export default DiscordGuildField;
